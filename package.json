@@ -1,10 +1,10 @@
 {
     "name": "rollup-generator",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "quickly build rollup project",
     "main": "./bin/rollup-cli.js",
     "bin": {
-        "rollup-generator": "./bin/rollup-cli.js"
+        "rollup-go": "./bin/rollup-cli.js"
     },
     "author": "dbp",
     "license": "ISC",
