@@ -4,7 +4,9 @@
     "description": "",
     "main": "./source/bundle.js",
     "scripts": {
-        "start": "rollup -c -w"
+        "start": "rollup -c -w",
+        "bundle:cjs": "rollup -c -w -f cjs",
+        "bundle:es": "rollup -c -w -f es"
     },
     "author": "",
     "license": "ISC",
