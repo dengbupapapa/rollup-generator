@@ -6,9 +6,9 @@
 #### 2. 到达目标目录
 	$ cd xxx
 #### 3. 构建项目
-	$ rullup-go
+	$ rollup-go
 #### 4. 进入项目
-	$ cd rullup-project(默认地址，也可以通过构建项目的时候设置项目目录名称rullup-go init xxx)
+	$ cd rollup-project(默认地址，也可以通过构建项目的时候设置项目目录名称rollup-go init xxx)
 #### 5. 安装依赖
 	$ npm i
 #### 6. 启动rollup
