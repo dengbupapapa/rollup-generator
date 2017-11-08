@@ -4,7 +4,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 
 export default {
-    input: './source/main.js',
+    input: './source/asdsadsa.js',
     plugins: [json(), resolve(), commonjs(), babel({
         exclude: 'node_modules/**'
     })],
@@ -17,12 +17,12 @@ export default {
     // outro: 'var asdasdsa="123"',
     // cache:true,
     output: {
-        file: './source/bundle.js',
-        format: 'umd',
-        name: 'main',
+        file: './source/asaadsfxxx.js',
+        format: 'cjs',
+        name: 'hasdhashdh',
         // paths: {
         //     d3: 'https://d3js.org/d3.v4.min'
         // }
-        sourceMap: false,
+        sourceMap: true,
     }
 };

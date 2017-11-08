@@ -1,10 +1,13 @@
 {
-    "name": "name",
+    "name": "bundle",
     "version": "1.0.0",
     "description": "",
-    "main": "./source/main.js",
+    "main": "./source/bundle.js",
     "scripts": {
-        "start": "rollup -c -w"
+        "start": "rollup -c -w",
+        "bundle:cjs": "rollup -c -w -f cjs --o $$placeholder.cjs.js",
+        "bundle:es": "rollup -c -w -f es --o $$placeholder.es.js",
+        "bundle:umd": "rollup -c -w -f umd --o $$placeholder.umd.js"
     },
     "author": "",
     "license": "ISC",
