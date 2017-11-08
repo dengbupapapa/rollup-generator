@@ -5,9 +5,9 @@
     "main": "./source/bundle.js",
     "scripts": {
         "start": "rollup -c -w",
-        "bundle:cjs": "rollup -c -w -f cjs --o $$placeholder.cjs.js",
-        "bundle:es": "rollup -c -w -f es --o $$placeholder.es.js",
-        "bundle:umd": "rollup -c -w -f umd --o $$placeholder.umd.js"
+        "bundle:cjs": "rollup -c -w -f cjs --o ./source/$$placeholder.cjs.js",
+        "bundle:es": "rollup -c -w -f es --o ./source/$$placeholder.es.js",
+        "bundle:umd": "rollup -c -w -f umd --o ./source/$$placeholder.umd.js"
     },
     "author": "",
     "license": "ISC",
