@@ -6,9 +6,9 @@ const fs = require('fs');
 const path = require('path');
 const pkg = require('../package.json')
 
-const SetRollupConfigDuplexStream = require('./setRollupConfigDuplexStream.js'); //config文件配置流
-const SetIndexHtmlDuplexStream = require('./setIndexHtmlDuplexStream.js'); //index.html文件配置流
-const SetPacageJsonDuplexStream = require('./setPacageJsonDuplexStream.js'); //package.json文件配置流
+const SetRollupConfigTransformStream = require('./setRollupConfigTransformStream.js'); //config文件配置流
+const SetIndexHtmlTransformStream = require('./setIndexHtmlTransformStream.js'); //index.html文件配置流
+const SetPacageJsonTransformStream = require('./setPacageJsonTransformStream.js'); //package.json文件配置流
 
 let cwd = process.cwd();
 let commandRootPath = path.resolve(__dirname, '..');
@@ -33,15 +33,15 @@ program
 
 program.parse(process.argv);
 
-const setRollupConfigDuplexStream = new SetRollupConfigDuplexStream(program);
-const setIndexHtmlDuplexStream = new SetIndexHtmlDuplexStream(program);
-const setPacageJsonDuplexStream = new SetPacageJsonDuplexStream(program);
+const setRollupConfigTransformStream = new SetRollupConfigTransformStream(program);
+const setIndexHtmlTransformStream = new SetIndexHtmlTransformStream(program);
+const setPacageJsonTransformStream = new SetPacageJsonTransformStream(program);
 
 copyTemplates(path.resolve(__dirname, '..', 'templates'));
 
 function fileCopyFinishLog(writeStream, outputPath) { //copy finish after log
 
-    writeStream.on('end', function() {
+    writeStream.on('finish', function() {
         console.log('   \x1b[36mcreate\x1b[0m : ' + path.relative(cwd, outputPath));
     });
 
@@ -88,19 +88,24 @@ function copyTemplates(dir) {
 
                     case 'rollup.config.js':
 
-                        currentCreateReadStream.pipe(setRollupConfigDuplexStream).pipe(currentCreateWriteStream);
+                        currentCreateReadStream.pipe(setRollupConfigTransformStream).pipe(currentCreateWriteStream);
 
                         break;
 
                     case 'index.html':
-
-                        currentCreateReadStream.pipe(setIndexHtmlDuplexStream).pipe(currentCreateWriteStream);
+                        // setIndexHtmlTransformStream.on('end', function() {
+                        //     console.log('end');
+                        // });
+                        // setIndexHtmlTransformStream.on('finis', function() {
+                        //     console.log('finis');
+                        // });
+                        currentCreateReadStream.pipe(setIndexHtmlTransformStream).pipe(currentCreateWriteStream);
 
                         break;
 
                     case 'package.json':
 
-                        currentCreateReadStream.pipe(setPacageJsonDuplexStream).pipe(currentCreateWriteStream);
+                        currentCreateReadStream.pipe(setPacageJsonTransformStream).pipe(currentCreateWriteStream);
 
                         break;
 
@@ -108,7 +113,7 @@ function copyTemplates(dir) {
                         currentCreateReadStream.pipe(currentCreateWriteStream);
                 }
 
-                fileCopyFinishLog(currentCreateReadStream, outputPath); //copy finish after log
+                fileCopyFinishLog(currentCreateWriteStream, outputPath); //copy finish after log
 
             }
 

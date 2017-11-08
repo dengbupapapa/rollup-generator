@@ -4,16 +4,17 @@ let fs = require('fs');
 let path = require('path');
 let resolve = path.resolve;
 
-util.inherits(SetIndexHtmlDuplexStream, stream.Duplex);
+util.inherits(SetIndexHtmlTransformStream, stream.Transform);
 
-function SetIndexHtmlDuplexStream(program, opt) {
-    stream.Duplex.call(this, {
-        objectMode: true
+function SetIndexHtmlTransformStream(program, opt) {
+    stream.Transform.call(this, {
+        // objectMode: true,
+        // allowHalfOpen: false
     });
-    this.program = program
+    this.program = program;
 }
 
-SetIndexHtmlDuplexStream.prototype._write = function(chunk, encoding, callback) {
+SetIndexHtmlTransformStream.prototype._transform = function(chunk, encoding, callback) {
 
     let {
         output,
@@ -21,6 +22,8 @@ SetIndexHtmlDuplexStream.prototype._write = function(chunk, encoding, callback) 
     } = this.program;
     // src="./bundle.js"
     //new rollupDemo();
+    // console.log('-----');
+    // console.log(this._readableState);
     chunk = chunk.toString()
         .replace(/(src\=\"\.\/)(.+?)(\")/, '$1' + output + '$3') //设置rollup.config.js input 入口文件名字
         .replace(/(new\s)(.+?)(\(\))/, '$1' + name + '$3') //设置rollup.config.js input 入口文件名字
@@ -31,8 +34,4 @@ SetIndexHtmlDuplexStream.prototype._write = function(chunk, encoding, callback) 
 
 }
 
-SetIndexHtmlDuplexStream.prototype._read = function(size) {
-
-}
-
-module.exports = SetIndexHtmlDuplexStream
+module.exports = SetIndexHtmlTransformStream

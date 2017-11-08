@@ -4,16 +4,14 @@ let fs = require('fs');
 let path = require('path');
 let resolve = path.resolve;
 
-util.inherits(SetPacageJsonDuplexStream, stream.Duplex);
+util.inherits(SetPacageJsonTransformStream, stream.Transform);
 
-function SetPacageJsonDuplexStream(program, opt) {
-    stream.Duplex.call(this, {
-        objectMode: true
-    });
+function SetPacageJsonTransformStream(program, opt) {
+    stream.Transform.call(this);
     this.program = program
 }
 
-SetPacageJsonDuplexStream.prototype._write = function(chunk, encoding, callback) {
+SetPacageJsonTransformStream.prototype._transform = function(chunk, encoding, callback) {
 
     let {
         output
@@ -29,8 +27,4 @@ SetPacageJsonDuplexStream.prototype._write = function(chunk, encoding, callback)
 
 }
 
-SetPacageJsonDuplexStream.prototype._read = function(size) {
-
-}
-
-module.exports = SetPacageJsonDuplexStream
+module.exports = SetPacageJsonTransformStream
