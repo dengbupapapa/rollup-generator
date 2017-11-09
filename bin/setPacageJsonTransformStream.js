@@ -19,7 +19,7 @@ SetPacageJsonTransformStream.prototype._transform = function(chunk, encoding, ca
 
     chunk = chunk.toString()
         .replace(/(name\"\:\s*\")(.+?)(\"\,)/, '$1' + output.replace('.js', '') + '$3')
-        .replace(/(main\"\:\s*\"\.\/source\/)(.+?)(\"\,)/, '$1' + output + '$3')
+        .replace(/(main\"\:\s*\"\.\/bundle\/)(.+?)(\"\,)/, '$1' + output + '$3')
         .replace(/\$\$placeholder/g, output.replace('.js', ''));
 
     this.push(chunk);

@@ -1,6 +1,6 @@
 {
     "name": "rollup-generator",
-    "version": "1.0.13",
+    "version": "1.0.15",
     "description": "quickly build rollup project",
     "main": "./bin/rollup-cli.js",
     "bin": {

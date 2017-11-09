@@ -26,7 +26,7 @@ SetRollupConfigTransformStream.prototype._transform = function(chunk, encoding, 
 
     chunk = chunk.toString()
         .replace(/(input\:\s*\'\.\/source\/)(.+?)(\'\,)/, '$1' + input + '$3') //设置rollup.config.js input 入口文件名字
-        .replace(/(file\:\s*\'\.\/source\/)(.+?)(\'\,)/, '$1' + output + '$3') //设置rollup.config.js 输出文件名字
+        .replace(/(file\:\s*\'\.\/bundle\/)(.+?)(\'\,)/, '$1' + output + '$3') //设置rollup.config.js 输出文件名字
         .replace(/(format\:\s*\')(.+?)(\'\,)/, '$1' + format + '$3') //设置rollup.config.js 输出打包格式
         .replace(/(name\:\s*\')(.+?)(\'\,)/, '$1' + name + '$3') //设置rollup.config.js 输出umd格式全局方法名
         .replace(/(sourceMap\:\s*)(.+?)(\,)/, '$1' + sourceMap + '$3') //设置rollup.config.js 是否输出sourcemap

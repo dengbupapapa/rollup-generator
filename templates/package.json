@@ -2,12 +2,12 @@
     "name": "bundle",
     "version": "1.0.0",
     "description": "",
-    "main": "./source/bundle.js",
+    "main": "./bundle/bundle.js",
     "scripts": {
-        "start": "rollup -c -w",
-        "bundle:cjs": "rollup -c -w -f cjs --o ./source/$$placeholder.cjs.js",
-        "bundle:es": "rollup -c -w -f es --o ./source/$$placeholder.es.js",
-        "bundle:umd": "rollup -c -w -f umd --o ./source/$$placeholder.umd.js"
+        "start": "rollup -c -w --o ./bundle/$$placeholder.js",
+        "bundle:cjs": "rollup -c -w -f cjs --o ./bundle/$$placeholder.cjs.js",
+        "bundle:es": "rollup -c -w -f es --o ./bundle/$$placeholder.es.js",
+        "bundle:umd": "rollup -c -w -f umd --o ./bundle/$$placeholder.umd.js"
     },
     "author": "",
     "license": "ISC",

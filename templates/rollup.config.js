@@ -17,7 +17,7 @@ export default {
     // outro: 'var asdasdsa="123"',
     // cache:true,
     output: {
-        file: './source/bundle.js',
+        file: './bundle/bundle.js',
         format: 'umd',
         name: 'rollupDemo',
         // paths: {
