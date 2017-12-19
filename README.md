@@ -26,3 +26,9 @@
     
     Commands:
     	init <projectName>  部署一个服务节点
+    	
+    	
+## Community
+
+[github](https://github.com/dengbupapapa/rollup-generator) 
+[npm](https://www.npmjs.com/package/rollup-generator) 
